@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'front', 'build')));
 
 // Nodemailer transport setup
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // or use SMTP config
+  service: 'yahoo',
   auth: {
     user: process.env.EMAIL_USER, // your email
     pass: process.env.EMAIL_PASS, // your email password or app password
