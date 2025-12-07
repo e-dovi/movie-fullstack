@@ -1,25 +1,28 @@
 # 🎬 Movie Search
 
-This project allows users to search movies by title, build a watchlist, and receive their selected movies by email.  
-It consists of a React frontend and an Express backend with JWT authentication and Nodemailer integration.
+This project is a fullstack React + Express application that allows users to:
+- Search movies by title using the TMDb API
+- Build a personal watchlist
+- Provide an email address to receive their selected movies
+- Secure requests with JWT stored in cookies
+- Serve the React frontend directly from the Express backend
 
 ---
 
 ## ⚙️ Installation
 
 ### `npm install`
-Run this command in both the root and `front` directories to install all dependencies.
+Run this command in the root directory to install backend dependencies.  
+Then run it inside the `front` directory to install frontend dependencies.
 
 ---
 
 ## ▶️ Running the Project
 
-### Frontend
-Start the React app in development mode:
-
-cd front
-npm start
-Open http://localhost:3000 to view the app in your browser. The backend will serve the production build when deployed.
+### Build Frontend
+From the `front` directory:
+```bash
+npm run build
 
 ### Backend
 Start the Express server locally on port **4001**:
