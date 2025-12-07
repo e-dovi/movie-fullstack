@@ -1,0 +1,160 @@
+.search-page {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
+    color: #f5f5f5;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-box{
+    flex-direction: row;
+  }
+  .search-box form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;  /* pushes button down to input’s bottom edge */
+    gap: 0.5rem;
+  }
+  
+  
+  .search-box input {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: none;
+    width: 280px;
+  }
+  
+  .search-box button {
+    padding: 0.3rem 0.8rem;     /* compact size */
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 6px;
+    background: #ff4757;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  
+    margin: 1rem;             /* adds space all around */
+    /* or margin-left / margin-right / margin-top for specific sides */
+  }
+  
+  
+  .search-box button:hover {
+    background: #e84118;
+  }
+  
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .results, .playlist {
+    background: #333;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .results h2, .playlist h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .results-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .result-card {
+    background: #444;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .result-card h3 {
+    margin: 0;
+  }
+  
+  .add-btn {
+    background: #2ecc71;
+    border: none;
+    padding: 0.3rem 0.7rem; 
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  .add-btn:hover {
+    background: #27ae60;
+  }
+  
+  .playlist ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .playlist li {
+    margin: 0.5rem 0;
+    background: #555;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+  
+  .email-section {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .email-form {
+    display: flex;
+    flex-direction: column;   
+    align-items: center;    
+    gap: 0.8rem;
+  }
+  
+  .email-form p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .email-form input {
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: none;
+    width: 240px;
+  }
+  
+  .email-form button {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 6px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .email-form button:hover {
+    background: #2980b9;
+  }
+  
+  .empty {
+    font-style: italic;
+    color: #aaa;
+  }
+  
