@@ -1,27 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import getMovie from '../movies.js';
-import send from '../email.js';
 import './Search.css'; // external stylesheet
 
 function Search() {
   const [results, setResults] = useState([]);
   const [addedMovies, setAddedMovies] = useState([]);
-  const [emailBody, setEmailBody] = useState('');
+
+  // Load watchlist from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem('watchlist');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      setAddedMovies(parsed);
+    }
+  }, []);
+
+  // Save watchlist to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(addedMovies));
+  }, [addedMovies]);
 
   // Handle movie search
   const handleSubmit = async (event) => {
     event.preventDefault();
     const query = event.target.search.value.trim();
     if (!query) return;
-
+  
     try {
       const res = await getMovie(query);
-      setResults(res.results || []);
+  
+      if (res?.error) {
+        alert(`${res.error} ⚠️`);
+        return;
+      }
+  
+      setResults(res?.results || []);
+  
     } catch (err) {
       console.error(err);
       alert("⚠️ Something went wrong. Please try again later.");
     }
   };
+  
 
   // Add movie to playlist
   const handleAddMovie = (title, releaseDate) => {
@@ -34,40 +54,46 @@ function Search() {
 
     const updatedMovies = [...addedMovies, movieLabel];
     setAddedMovies(updatedMovies);
-    setEmailBody(updatedMovies.join('. ') + '.');
+  };
+  
+  // Remove movie from playlist
+  const handleRemoveMovie = (movieLabel) => {
+      const updated = addedMovies.filter((m) => m !== movieLabel);
+      setAddedMovies(updated);
+    };
+  
+
+  // Export watchlist as text file
+  const exportWatchlist = () => {
+    const blob = new Blob([addedMovies.join('\n')], { type: 'text/plain' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'my-watchlist.txt';
+    link.click();
   };
 
-  // Send email
-  const sendEmail = async (event) => {
-    event.preventDefault();
-    const recipient = event.target.email.value;
-    if (!recipient) return;
-
-    alert('📧 Sending email...');
-
-    const data = { recipient, txt: emailBody };
-
-    try {
-      const res = await send(data);
-      if (res.status === 200) {
-        alert('✅ Email was sent successfully!');
-        setAddedMovies([]);
-        setEmailBody('');
-      } else {
-        alert('⚠️ Unable to send Email. Please try again later.');
+  // Share watchlist (native share or clipboard fallback)
+  const shareWatchlist = async () => {
+    const text = `My Watchlist:\n${addedMovies.join('\n')}`;
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'My Watchlist', text });
+      } catch (err) {
+        console.error('Share failed:', err);
       }
-    } catch (err) {
-      console.error(err);
-      alert('❌ Error sending email.');
+    } else {
+      await navigator.clipboard.writeText(text);
+      alert('✅ Watchlist copied to clipboard!');
     }
   };
+
 
   return (
     <div className="search-page">
       {/* Header */}
       <header className="header">
         <h1>🎥 Movie Finder</h1>
-        <p>Search, build your playlist, and get updates by email ✨</p>
+        <p>Search, build your playlist, and save or share with friends and family ✨</p>
       </header>
 
       {/* Search Box */}
@@ -82,7 +108,6 @@ function Search() {
           />
           <button type="submit">Search 🚀</button>
         </form>
-        
       </div>
 
       {/* Results + Playlist */}
@@ -119,25 +144,29 @@ function Search() {
           {addedMovies.length === 0 ? (
             <p className="empty">No movies added yet.</p>
           ) : (
-            <ul>
-              {addedMovies.map((movie) => (
-                <li key={movie}>{movie}</li>
-              ))}
-            </ul>
+            <div>
+              <ul>
+                {addedMovies.map((movie) => (
+                    <li key={movie} className="playlist-item">
+                    <span>{movie}</span>
+                    <button
+                        className="remove-btn"
+                        onClick={() => handleRemoveMovie(movie)}>
+                        ➖
+                    </button>
+                    </li>
+                ))}
+                </ul>
+
+              <div className="playlist-actions">
+                <button onClick={exportWatchlist}>📤 Export</button>
+                <button onClick={shareWatchlist}>🔗 Share</button>
+              </div>
+            </div>
           )}
         </div>
       </div>
 
-      {/* Email Form */}
-      <div className="email-section">
-        <form onSubmit={sendEmail} className="email-form">
-          <p>
-            📧 Enter your email to receive info about your selected movies:
-          </p>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required />
-          <button type="submit">Send Email ✉️</button>
-        </form>
-      </div>
     </div>
   );
 }

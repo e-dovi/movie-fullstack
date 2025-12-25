@@ -1,9 +1,10 @@
 # 🎬 Movie Search
-
 This project is a fullstack React + Express application that allows users to:
+
 - Search movies by title using the TMDb API
 - Build a personal watchlist
-- Provide an email address to receive their selected movies
+- Download their selected movies as a data file
+- Persist watchlist data locally using localStorage
 - Secure requests with JWT stored in cookies
 - Serve the React frontend directly from the Express backend
 
@@ -34,28 +35,37 @@ Create a .env file in the project root with the following:
 API_KEY
 Your TMDB API Key used to fetch movie data.
 
+TMDB_URL
+The base URL for TMDb API requests (e.g., https://api.themoviedb.org/3).
+
 JWT_KEY
 The JWT secret used to sign and verify tokens.
-
-EMAIL_USER
-The email address used by Nodemailer to send messages.
-
-EMAIL_PASS
-The password or app password for the email account.
 
 PORT
 (Optional) Port for the backend server. Defaults to 4001.
 
+Note:  
+Email-related variables (EMAIL_USER, EMAIL_PASS) are no longer required since the email export feature has been removed.
+
 📡 Features
 🔍 Search movies by title using TMDb API
+Fast, responsive search powered by TMDb.
 
 📝 Build a playlist of selected movies
+Add movies to your personal watchlist with a clean UI.
 
-📧 Send email with your watchlist using Nodemailer
+💾 Download your watchlist
+Export your selected movies as a downloadable JSON file — no email required.
 
-🔐 JWT authentication stored in cookies for secure requests
+📦 Persistent watchlist with localStorage
+Your selections remain saved across sessions automatically.
+
+🔐 JWT authentication stored in cookies
+Secure backend requests with token-based authentication.
 
 🎨 React frontend styled with modern UI and emoji accents
+A polished, user-friendly interface.
+
 
 📜 License
 Copyright (c) 2025 Elvis Dovi

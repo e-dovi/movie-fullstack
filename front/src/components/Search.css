@@ -4,21 +4,22 @@
     color: #f5f5f5;
     min-height: 100vh;
     padding: 2rem;
-  }
+}
   
-  .header {
+.header {
     text-align: center;
   }
   
-  .header h1 {
+.header h1 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
   }
   
-  .search-box{
+.search-box{
     flex-direction: row;
   }
-  .search-box form {
+
+.search-box form {
     display: flex;
     justify-content: center;
     align-items: flex-end;  /* pushes button down to input’s bottom edge */
@@ -26,14 +27,14 @@
   }
   
   
-  .search-box input {
+.search-box input {
     padding: 0.6rem;
     border-radius: 8px;
     border: none;
     width: 280px;
   }
   
-  .search-box button {
+.search-box button {
     padding: 0.3rem 0.8rem;     /* compact size */
     font-size: 0.85rem;
     border: none;
@@ -42,103 +43,175 @@
     color: white;
     cursor: pointer;
     transition: background 0.3s ease;
-  
-    margin: 1rem;             /* adds space all around */
-    /* or margin-left / margin-right / margin-top for specific sides */
+    margin: 1rem;             
   }
   
   
-  .search-box button:hover {
+.search-box button:hover {
     background: #e84118;
   }
   
-  .main-grid {
+.main-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 2rem;
   }
   
-  .results, .playlist {
+.results, .playlist {
     background: #333;
     padding: 1.5rem;
     border-radius: 12px;
   }
   
-  .results h2, .playlist h2 {
+.results h2, .playlist h2 {
     margin-bottom: 1rem;
   }
   
-  .results-grid {
+.results-grid {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  }
+  } 
   
-  .result-card {
+.result-card {
     background: #444;
     padding: 1rem;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 1rem; 
+    flex: 1; 
   }
   
-  .result-card h3 {
+.result-card h3 {
     margin: 0;
   }
-  
-  .add-btn {
+
+.movie-info {
+    margin-right: 1rem;
+    flex: 1;
+} 
+
+.add-btn {
     background: #2ecc71;
     border: none;
-    padding: 0.3rem 0.7rem; 
+    padding: 0.3rem 0.7rem;
     font-size: 0.85rem;
     border-radius: 6px;
     cursor: pointer;
     color: white;
-    transition: background 0.3s ease;
-  }
-  
-  .add-btn:hover {
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.add-btn:hover {
     background: #27ae60;
-  }
+    transform: translateY(-2px);
+}
+
+.add-btn:active {
+    transform: translateY(0);
+    background: #239a55;
+}
+
   
-  .playlist ul {
+.playlist ul {
     list-style: none;
     padding: 0;
   }
   
-  .playlist li {
+.playlist li {
     margin: 0.5rem 0;
     background: #555;
     padding: 0.5rem;
     border-radius: 6px;
   }
+
+.playlist-actions { 
+    display: flex; 
+    justify-content: center; 
+    gap: 12px; 
+    margin-top: 10px; 
+} 
+
+.playlist-actions button { 
+    background: #3a3a3a; 
+    border: none; 
+    padding: 10px 16px; 
+    border-radius: 8px; 
+    color: #fff; 
+    font-size: 14px; 
+    cursor: pointer; 
+    transition: background 0.2s ease, transform 0.15s ease; 
+} 
+
+.playlist-actions button:hover { 
+    background: #505050; 
+    transform: translateY(-2px); 
+} 
+
+.playlist-actions button:active { 
+    transform: translateY(0); 
+    background: #444; 
+  }
+
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2a2a2a;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
   
-  .email-section {
+.remove-btn {
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  
+.remove-btn:hover {
+    background: #ff6666;
+    transform: translateY(-2px);
+  }
+  
+.remove-btn:active {
+    transform: translateY(0);
+    background: #e04444;
+  }
+  
+  
+.email-section {
     margin-top: 2rem;
     text-align: center;
   }
   
-  .email-form {
+.email-form {
     display: flex;
     flex-direction: column;   
     align-items: center;    
     gap: 0.8rem;
   }
   
-  .email-form p {
+.email-form p {
     margin-bottom: 0.5rem;
   }
   
-  .email-form input {
+.email-form input {
     padding: 0.6rem;
     border-radius: 8px;
     border: none;
     width: 240px;
   }
   
-  .email-form button {
+.email-form button {
     padding: 0.3rem 0.8rem;
     font-size: 0.85rem;
     border: none;
@@ -149,11 +222,11 @@
     transition: background 0.3s ease;
   }
   
-  .email-form button:hover {
+.email-form button:hover {
     background: #2980b9;
   }
   
-  .empty {
+.empty {
     font-style: italic;
     color: #aaa;
   }
