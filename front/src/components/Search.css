@@ -4,6 +4,7 @@
     color: #f5f5f5;
     min-height: 100vh;
     padding: 2rem;
+    overflow-x: hidden;
 }
   
 .header {
@@ -21,8 +22,9 @@
 
 .search-box form {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-end;  /* pushes button down to input’s bottom edge */
+    align-items: flex-end;  
     gap: 0.5rem;
   }
   
@@ -31,7 +33,8 @@
     padding: 0.6rem;
     border-radius: 8px;
     border: none;
-    width: 280px;
+    width: 100%;
+    max-width: 320px; 
   }
   
 .search-box button {
@@ -42,8 +45,10 @@
     background: #ff4757;
     color: white;
     cursor: pointer;
-    transition: background 0.3s ease;
-    margin: 1rem;             
+    transition: background 0.3s ease;    
+    margin: 0;
+    margin-bottom: .5rem ;
+    white-space: nowrap;       
   }
   
   
@@ -165,6 +170,14 @@
     border-radius: 8px;
     margin-bottom: 10px;
   }
+
+.playlist-item span {
+    flex: 1;
+    min-width: 0;           
+    overflow-wrap: anywhere; 
+    word-break: break-word;
+  }
+  
   
 .remove-btn {
     background: #ff4d4d;
@@ -229,5 +242,33 @@
 .empty {
     font-style: italic;
     color: #aaa;
+  }
+  
+@media (max-width: 768px) {
+    .main-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+.jump-to-playlist {
+    display: none;
+    margin-top: 1rem;
+    text-align: center;
+    background: #3a3a3a;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+@media (max-width: 768px) {
+    .jump-to-playlist {
+      display: block;
+    }
+  }
+  
+html {
+    scroll-behavior: smooth;
   }
   

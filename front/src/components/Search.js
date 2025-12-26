@@ -111,6 +111,9 @@ function Search() {
       </div>
 
       {/* Results + Playlist */}
+      <a href="#playlist" className="jump-to-playlist">
+        ⬇️ Jump to Playlist
+      </a>
       <div className="main-grid">
         {/* Results */}
         <div className="results">
@@ -139,7 +142,7 @@ function Search() {
         </div>
 
         {/* Playlist */}
-        <div className="playlist">
+        <div className="playlist" id="playlist">
           <h2>📝 Your Playlist</h2>
           {addedMovies.length === 0 ? (
             <p className="empty">No movies added yet.</p>

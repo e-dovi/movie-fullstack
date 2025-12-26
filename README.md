@@ -22,7 +22,7 @@ Then run it inside the `front` directory to install frontend dependencies.
 
 ### Build Frontend
 From the `front` directory:
-```bash
+
 npm run build
 
 ### Backend
